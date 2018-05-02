@@ -13,7 +13,13 @@ app.use(bodyParser.json());
 const layout = require("./views/layout")
 
 app.get("/", (req, res) => {
-  res.send(layout("Hello World"));
+  res.redirect("/wiki");
 });
+
+const wikiRouter = require('./routes/wiki');
+const userRouter = require('./routes/user');
+
+app.use('/wiki', wikiRouter);
+app.use('/user', userRouter);
 
 module.exports = app;
